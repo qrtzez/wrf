@@ -41,7 +41,7 @@ public class CopyDatabaseService {
         return allSource;
     }
 
-    //@Transactional(transactionManager = "sourceTransactionManager", isolation = Isolation.SERIALIZABLE)
+    @Transactional(transactionManager = "sourceTransactionManager", isolation = Isolation.SERIALIZABLE)
     public void updateTargetTable() {
         List<SourceRestTable> allRest = sourceRestTableRepository.findAll();
         List<TargetRestTable> targetRestTables = allRest.stream()
