@@ -1,6 +1,5 @@
-package com.example.wrf.demo.repository;
+package com.example.wrf.demo.target;
 
-import com.example.wrf.demo.entity.TargetRestTable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

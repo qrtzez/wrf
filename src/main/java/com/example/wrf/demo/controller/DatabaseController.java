@@ -1,13 +1,13 @@
 package com.example.wrf.demo.controller;
 
-import com.example.wrf.demo.entity.SourceTable;
+import com.example.wrf.demo.source.SourceTable;
 import com.example.wrf.demo.service.CopyDatabaseService;
-import com.example.wrf.demo.entity.TargetTable;
-import com.example.wrf.demo.repos.SourceTableRepository;
-import com.example.wrf.demo.repository.TargetTableRepository;
+import com.example.wrf.demo.source.SourceView;
+import com.example.wrf.demo.target.TargetTable;
+import com.example.wrf.demo.source.SourceTableRepository;
+import com.example.wrf.demo.target.TargetTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,9 +28,14 @@ public class DatabaseController {
 
 
     @GetMapping("/all")
-    public Integer getAll() {
-        List<TargetTable> all = tableRepository.findAll();
-        return all.size();
+    public List<TargetTable> getAll() {
+        List<TargetTable> all = service.getElementsFromTargetTable();
+        return all;
+    }
+
+    @GetMapping("/save_target_table")
+    public void saveTargetTable(@RequestParam int age, @RequestParam String name) throws Exception {
+       service.addTableElement(age, name);
     }
 
     @GetMapping("/save_surce_rest")
@@ -39,8 +44,8 @@ public class DatabaseController {
     }
 
     @GetMapping("/save_all")
-    public void saveAll() {
-        service.save10000SourceElements();
+    public void saveAll(@RequestParam int count) {
+        service.save10000SourceElements(count);
     }
 
     @GetMapping("/test")
@@ -48,7 +53,7 @@ public class DatabaseController {
         service.updateTargetTable();
     }
 
-    @GetMapping("/save")
+    /*@GetMapping("/save")
     public void save(@RequestParam String name, @RequestParam Integer age) {
         SourceTable sourceTable = SourceTable.builder()
                 .age(age)
@@ -56,11 +61,10 @@ public class DatabaseController {
                 .key(UUID.randomUUID().toString())
                 .build();
         sourceTableRepository.save(sourceTable);
-
+*/
         /*TargetTable targetTable = TargetTable.builder()
                 .firstName("Kirill")
                 .yearOld(19)
                 .build();
         tableRepository.save(targetTable);*/
-    }
 }

@@ -1,16 +1,16 @@
-package com.example.wrf.demo.entity;
+package com.example.wrf.demo.target;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Builder
 @Entity
-@Table(name = "source_rest")
+@Table(name = "target_rest")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SourceRestTable {
+public class TargetRestTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

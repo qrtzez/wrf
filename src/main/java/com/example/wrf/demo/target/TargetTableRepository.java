@@ -1,6 +1,5 @@
-package com.example.wrf.demo.repository;
+package com.example.wrf.demo.target;
 
-import com.example.wrf.demo.entity.TargetTable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,5 +8,7 @@ public interface TargetTableRepository extends JpaRepository<TargetTable, Long> 
 
     TargetTable findByFirstNameAndYearOld(String name, Integer age);
 
-    TargetTable findByKey(String key);
+    TargetTable findByKeyP(String key);
+
+    TargetTable findByFirstName(String name);
 }

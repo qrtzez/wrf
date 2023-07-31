@@ -1,6 +1,6 @@
 package com.example.wrf.demo;
 
-import com.example.wrf.demo.repos.SourceTableRepository;
+import com.example.wrf.demo.source.SourceTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -18,7 +18,7 @@ import java.util.HashMap;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackageClasses = SourceTableRepository.class,
+        basePackages = "com.example.wrf.demo.source",
         entityManagerFactoryRef = "sourceEntityManager",
         transactionManagerRef = "sourceTransactionManager")
 public class SourceDatabaseConfig {
@@ -38,7 +38,7 @@ public class SourceDatabaseConfig {
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(secondaryDataSource());
         em.setPackagesToScan(
-                "com.example.wrf.demo");
+                "com.example.wrf.demo.source");
 
         HibernateJpaVendorAdapter vendorAdapter
                 = new HibernateJpaVendorAdapter();

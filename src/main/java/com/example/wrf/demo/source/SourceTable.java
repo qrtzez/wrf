@@ -1,9 +1,8 @@
-package com.example.wrf.demo.entity;
+package com.example.wrf.demo.source;
 
+import com.example.wrf.demo.source.SourceRestTable;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @Builder
 @Entity
@@ -23,6 +22,8 @@ public class SourceTable {
     private String name;
 
     private String key;
+
+    private Integer money;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     private SourceRestTable restTable;

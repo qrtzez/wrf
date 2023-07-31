@@ -1,9 +1,7 @@
-package com.example.wrf.demo.entity;
+package com.example.wrf.demo.target;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @Builder
 @Entity
@@ -24,8 +22,9 @@ public class TargetTable {
     @Column(name = "first_name")
     private String firstName;
 
-    private String key;
+    @Column()
+    private String keyP;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    private TargetRestTable restTable;
+    @Column
+    private Integer money;
 }

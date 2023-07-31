@@ -1,6 +1,5 @@
-package com.example.wrf.demo.repos;
+package com.example.wrf.demo.source;
 
-import com.example.wrf.demo.entity.SourceRestTable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
